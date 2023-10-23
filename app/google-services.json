@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "316831528626",
+    "project_id": "guards-f66fb",
+    "storage_bucket": "guards-f66fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316831528626:android:8233d5d712b26fec90fbab",
+        "android_client_info": {
+          "package_name": "com.secure.secureguards"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_Zh3kB8boTO8Z85iv_yq2rmx3OCo_6-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
