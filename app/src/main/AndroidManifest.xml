@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <!--Permissions for internet-->
+    <!-- Permissions for internet -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -16,7 +16,19 @@
         android:theme="@style/Theme.SecureGuards"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".Shift_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Forget_Password_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Sign_Up_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Login_activity"
+            android:exported="false" />
+        <activity
+            android:name=".Dash_Board_Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

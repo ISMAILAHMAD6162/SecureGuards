@@ -15,4 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Secure Guards"
 include(":app")
- 
