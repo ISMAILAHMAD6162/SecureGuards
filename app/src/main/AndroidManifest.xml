@@ -16,6 +16,9 @@
         android:theme="@style/Theme.SecureGuards"
         tools:targetApi="31">
         <activity
+            android:name=".Screens.SplashActivity"
+            android:exported="false" />
+        <activity
             android:name=".Screens.AccountActivity"
             android:exported="false" />
         <activity
