@@ -13,13 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Home_Fragment extends Fragment {
 
 
 
-    private FirebaseFirestore db;
     TextView shift_activity_start;
 
     @Override

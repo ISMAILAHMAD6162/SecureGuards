@@ -23,6 +23,18 @@ public class Constant {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().putString("email", s).commit();
     }
+
+
+
+    public static String getUserId(Context context){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getString("id", "");
+    }
+    public static void setUserId(Context context , String s){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit().putString("id", s).commit();
+    }
+
     public static String getLicenceNumber(Context context){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getString("LicenceNumber", "");

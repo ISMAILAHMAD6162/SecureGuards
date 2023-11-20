@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.secure.secureguards.Dash_Board_Activity;
+import com.secure.secureguards.MainActivity;
 import com.secure.secureguards.R;
 
 public class SplashActivity extends AppCompatActivity {
@@ -22,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
                 try {
                     sleep(3000);
                     if(getLoginStatus(SplashActivity.this)){
-                        startActivity(new Intent(SplashActivity.this, Dash_Board_Activity.class));
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
                         finish();
                     }
 

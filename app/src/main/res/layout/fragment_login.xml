@@ -25,19 +25,20 @@
                 tools:ignore="ContentDescription" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_login_username"
-                android:layout_margin="10dp"
-                app:startIconDrawable="@drawable/ic_email"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:layout_margin="10dp"
+                android:hint="Licence Number"
+                app:startIconDrawable="@drawable/baseline_format_list_numbered_24"
                 tools:ignore="HardcodedText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_login_email"
+                    android:id="@+id/et_licence_number"
                     android:layout_width="match_parent"
-                    android:inputType="textEmailAddress"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"/>
+
+
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,7 +60,15 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
+            <TextView
+                android:id="@+id/tv_forgot_password"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="Forgot Password?"
+                android:layout_width="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="10dp"
+                android:layout_height="40dp"/>
 
             <Button
 

@@ -1,5 +1,6 @@
 package com.secure.secureguards.Fragments;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
@@ -7,10 +8,12 @@ import android.os.Bundle;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +26,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.secure.secureguards.R;
 import com.secure.secureguards.Screens.AccountActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class SignupFragment extends Fragment {
 
     private EditText et_register_email, etRegisterPassword,
@@ -33,6 +40,10 @@ public class SignupFragment extends Fragment {
     private Dialog loadingDialog;
     private FirebaseAuth firebaseAuth;
     DatabaseReference myRef;
+
+    DatePickerDialog datePicker,datePicker1;
+    final Calendar myCalendar= Calendar.getInstance();
+    final Calendar myCalendar1= Calendar.getInstance();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,9 +83,52 @@ public class SignupFragment extends Fragment {
                 String email = et_register_email.getText().toString();
                 String confirm_password = etRegisterConfirmPassword.getText().toString();
 
-                if (validate()) requestRegister(email,confirm_password);
+               if (validate()) requestRegister(email,confirm_password);
             }
         });
+        DatePickerDialog.OnDateSetListener date =new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH,month);
+                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+                String myFormat="MM/dd/yyyy";
+                SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+                et_dob.setText(dateFormat.format(myCalendar.getTime()));
+            }
+        };
+        et_dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                datePicker =  new DatePickerDialog(getContext(),date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH));
+                datePicker.getDatePicker().setMaxDate(System.currentTimeMillis() - 1000);
+                datePicker.show();
+            }
+        });
+
+        DatePickerDialog.OnDateSetListener date1 =new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                myCalendar1.set(Calendar.YEAR, year);
+                myCalendar1.set(Calendar.MONTH,month);
+                myCalendar1.set(Calendar.DAY_OF_MONTH,day);
+                String myFormat="MM/dd/yyyy";
+                SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+                et_expire_date.setText(dateFormat.format(myCalendar.getTime()));
+            }
+        };
+        et_expire_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                datePicker1 =  new DatePickerDialog(getContext(),date1,myCalendar1.get(Calendar.YEAR),myCalendar1.get(Calendar.MONTH),myCalendar1.get(Calendar.DAY_OF_MONTH));
+                datePicker1.getDatePicker().setMinDate(System.currentTimeMillis() + 1000);
+                datePicker1.show();
+            }
+        });
+
+
+
+
         return view;
     }
     @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
@@ -96,20 +150,24 @@ public class SignupFragment extends Fragment {
     private void requestRegister(String email, String password) {
 
         loadingDialog.show();
+
         firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(getCreateUserWithEmailOnClickListener());
+                .addOnCompleteListener(getCreateUserWithEmailOnClickListener(email));
     }
-    private OnCompleteListener<AuthResult> getCreateUserWithEmailOnClickListener() {
+    private OnCompleteListener<AuthResult> getCreateUserWithEmailOnClickListener(String email) {
         return task -> {
             if (task.isSuccessful()) {
                 addRecord();
             } else {
                 loadingDialog.dismiss();
-                Toast.makeText(getContext(),"Registration failed!",Toast.LENGTH_LONG).show();
+                Log.d("error",task.toString());
+                Toast.makeText(getContext(),"Registration failed!"+task.toString(),Toast.LENGTH_LONG).show();
 
             }
+
         };
     }
+
 
     public void addRecord(){
 
@@ -126,6 +184,11 @@ public class SignupFragment extends Fragment {
             myRef.child("LicenceNumber").setValue(et_licence_number.getText().toString());
             myRef.child("LicenceExpireDate").setValue(et_expire_date.getText().toString());
 
+        myRef.child("ProfilePicture").setValue("empty");
+        myRef.child("BackSideBadge").setValue("empty");
+        myRef.child("FrontSideBadge").setValue("empty");
+        myRef.child("Address").setValue("empty");
+        myRef.child("City").setValue("empty");
 
             loadingDialog.dismiss();
             Toast.makeText(getContext(),"Registration successful",Toast.LENGTH_LONG).show();
