@@ -57,4 +57,6 @@ dependencies {
     // circular image
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.airbnb.android:lottie:3.4.1")
+
+    implementation ("com.github.apl-devs:appintro:v4.2.2")
 }

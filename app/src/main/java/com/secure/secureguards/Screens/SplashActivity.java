@@ -1,5 +1,6 @@
 package com.secure.secureguards.Screens;
 
+import static com.secure.secureguards.Utils.Constant.getAppIntro;
 import static com.secure.secureguards.Utils.Constant.getLoginStatus;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,29 +17,42 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-        Thread thread=new Thread(){
-            @Override
-            public void run() {
-                try {
-                    sleep(3000);
-                    if(getLoginStatus(SplashActivity.this)){
-                        startActivity(new Intent(SplashActivity.this, Dash_Board_Activity.class));
 
-                      //  startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                        finish();
-                    }
 
-                    // if no one login move to login screen
-                    else {
-                        startActivity(new Intent(SplashActivity.this, AccountActivity.class));
-                        finish();
+        if (getAppIntro(this)) {
+            startActivity(new Intent(SplashActivity.this, IntroActivity.class));
+        }
+        else {
+            setContentView(R.layout.activity_splash);
+            Thread thread=new Thread(){
+                @Override
+                public void run() {
+                    try {
+                        sleep(3000);
+                        if(getLoginStatus(SplashActivity.this)){
+                            startActivity(new Intent(SplashActivity.this, Dash_Board_Activity.class));
+
+                            //  startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                            finish();
+                        }
+
+                        // if no one login move to login screen
+                        else {
+                            startActivity(new Intent(SplashActivity.this, AccountActivity.class));
+                            finish();
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
-            }
-        };
-        thread.start();
+            };
+            thread.start();
+        }
+
+    }
+    @Override
+    protected void onPause() {
+        finish();
+        super.onPause();
     }
 }
