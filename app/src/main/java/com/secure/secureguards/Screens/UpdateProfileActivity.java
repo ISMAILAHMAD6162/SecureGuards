@@ -144,6 +144,9 @@ public class UpdateProfileActivity extends AppCompatActivity {
               }else if(et_city.getText().toString().isEmpty()){
                   et_city.setError("required");
               }else {
+                  DatabaseReference myRef=  FirebaseDatabase.getInstance().getReference("UserRecord").child(Constant.getUserId(UpdateProfileActivity.this));
+                  myRef.child("Address").setValue(et_address.getText().toString());
+                  myRef.child("City").setValue(et_city.getText().toString());
                   if(backImgUri!=null){
                       uploadBackImg();
                   }if(frontImgUri!=null){
