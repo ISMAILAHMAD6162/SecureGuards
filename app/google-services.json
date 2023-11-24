@@ -1,13 +1,33 @@
 {
   "project_info": {
-    "project_number": "316831528626",
-    "project_id": "guards-f66fb",
-    "storage_bucket": "guards-f66fb.appspot.com"
+    "project_number": "799833660537",
+    "firebase_url": "https://guards-app-c2d63-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "guards-app-c2d63",
+    "storage_bucket": "guards-app-c2d63.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:316831528626:android:8233d5d712b26fec90fbab",
+        "mobilesdk_app_id": "1:799833660537:android:0d60dc500e414afcd448a8",
+        "android_client_info": {
+          "package_name": "com.secure.secureguardadmin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-jN3Ut5tFj4FuBQs1cBdYv5TPIb6PKVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799833660537:android:cfd7d604c6a9e729d448a8",
         "android_client_info": {
           "package_name": "com.secure.secureguards"
         }
@@ -15,7 +35,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA_Zh3kB8boTO8Z85iv_yq2rmx3OCo_6-4"
+          "current_key": "AIzaSyD-jN3Ut5tFj4FuBQs1cBdYv5TPIb6PKVg"
         }
       ],
       "services": {
