@@ -53,7 +53,8 @@
             android:exported="false" />
         <activity
             android:name=".Dash_Board_Activity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.SecureGuards.NoActionBar" >
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->

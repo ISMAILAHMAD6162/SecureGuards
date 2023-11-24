@@ -16,4 +16,9 @@
         <item name="colorAccent">@color/purple_500</item>
     </style>
     <style name="Theme.SecureGuards" parent="Base.Theme.SecureGuards" />
+    <style name="Theme.SecureGuards.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>
