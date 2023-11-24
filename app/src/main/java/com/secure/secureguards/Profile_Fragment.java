@@ -51,33 +51,17 @@ public class Profile_Fragment extends Fragment {
         read_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 read_profile.setText("Ahmad");
-
-
-
             }
         });
-
-
-
     }
-
-
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-
         return inflater.inflate(R.layout.fragment_profile_, container, false);
-
     }
-
 
     public void getGuardProfile(View view)
     {

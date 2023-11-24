@@ -16,29 +16,30 @@
         android:theme="@style/Theme.SecureGuards"
         tools:targetApi="31">
         <activity
-            android:name=".Screens.SplashActivity"
+            android:name=".Shift_Activity"
             android:exported="false" />
         <activity
             android:name=".Screens.AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".Shift_Activity"
-            android:exported="false" />
-        <activity
             android:name=".Forget_Password_Activity"
             android:exported="false" />
+
         <activity
             android:name=".Sign_Up_Activity"
             android:exported="false" />
+
+
+
         <activity
             android:name=".Login_activity"
             android:exported="false" />
+
         <activity
-            android:name=".Dash_Board_Activity"
+            android:name=".Screens.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -71,7 +71,9 @@ public class MainActivity extends AppCompatActivity {
                 // we are displaying a success toast message.
                 Toast.makeText(MainActivity.this, "Your Course has been added to Firebase Firestore", Toast.LENGTH_SHORT).show();
             }
-        }).addOnFailureListener(new OnFailureListener() {
+        }).addOnFailureListener(new OnFailureListener()
+
+        {
             @Override
             public void onFailure(@NonNull Exception e) {
                 // this method is called when the data addition process is failed.
@@ -80,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     public void start_dashboard()
     {

@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-
 public class Shift_Activity extends AppCompatActivity
 {
+
     TextView shift;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,10 +16,11 @@ public class Shift_Activity extends AppCompatActivity
         shift.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 finish();
-
             }
         });
     }
+
+
+
 }
