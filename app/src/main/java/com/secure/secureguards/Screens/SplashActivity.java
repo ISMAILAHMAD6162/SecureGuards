@@ -23,7 +23,9 @@ public class SplashActivity extends AppCompatActivity {
                 try {
                     sleep(3000);
                     if(getLoginStatus(SplashActivity.this)){
-                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                        startActivity(new Intent(SplashActivity.this, Dash_Board_Activity.class));
+
+                      //  startActivity(new Intent(SplashActivity.this, MainActivity.class));
                         finish();
                     }
 

@@ -133,7 +133,7 @@ public class LoginFragment extends Fragment {
                     Constant.setUserEmail(getContext(),userMail);
                     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                     Constant.setUserId(getContext(),firebaseUser.getUid());
-                    startActivity(new Intent(getContext(), MainActivity.class));
+                    startActivity(new Intent(getContext(), Dash_Board_Activity.class));
                     getActivity().finish();
                     loadingDialog.show();
                 }

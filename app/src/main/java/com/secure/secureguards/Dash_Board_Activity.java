@@ -42,23 +42,25 @@ public class Dash_Board_Activity extends AppCompatActivity {
 
 
                  if (item.getItemId() == R.id.person) {
+
                      getSupportFragmentManager()
                              .beginTransaction()
-                             .replace(R.id.flFragment, home)
+                             .replace(R.id.flFragment, profile)
                              .commit();
+
                      return true;
                  }
-                else if (item.getItemId() == R.id.settings) {
+                else if (item.getItemId() == R.id.setting) {
                      getSupportFragmentManager()
                              .beginTransaction()
                              .replace(R.id.flFragment, shift)
                              .commit();
                      return true;
                  }
-                 else if (item.getItemId() == R.id.home) {
+                 else if (item.getItemId() == R.id._home) {
                      getSupportFragmentManager()
                              .beginTransaction()
-                             .replace(R.id.flFragment, profile)
+                             .replace(R.id.flFragment, home)
                              .commit();
                      return true;
                  }
