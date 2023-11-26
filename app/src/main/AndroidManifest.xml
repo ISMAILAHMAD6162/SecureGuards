@@ -24,8 +24,11 @@
             android:name=".Screens.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".Screens.SplashActivity"
+            android:name=".Dash_Board_Activity"
+            android:theme="@style/Theme.SecureGuards.NoActionBar"
             android:exported="true">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,10 +53,10 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-        <activity
-            android:name=".Dash_Board_Activity"
-            android:exported="true"
-            android:theme="@style/Theme.SecureGuards.NoActionBar" >
+   <!--     <activity -->
+        <!--        android:name=".Dash_Board_Activity" -->
+             <!--   android:exported="true" -->
+            <!--    android:theme="@style/Theme.SecureGuards.NoActionBar" > -->
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -61,7 +64,6 @@
 
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
-        </activity>
     </application>
 
 </manifest>
