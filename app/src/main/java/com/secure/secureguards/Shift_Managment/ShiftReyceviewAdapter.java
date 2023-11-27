@@ -36,6 +36,8 @@ public class ShiftReyceviewAdapter extends RecyclerView.Adapter<MyShiftRecycelVi
     public void onBindViewHolder(@NonNull MyShiftRecycelViewHolder holder, int position) {
 
         holder.shiftId.setText(shiftArrayList.get(position).shiftId);
+        holder.shiftTime.setText("Start Time"+shiftArrayList.get(position).startTime+"   End Time"+shiftArrayList.get(position).endTime);
+        holder.shiftDate.setText(shiftArrayList.get(position).year+"-"+shiftArrayList.get(position).month+"-"+shiftArrayList.get(position).day);
     }
 
     @Override
@@ -47,11 +49,13 @@ public class ShiftReyceviewAdapter extends RecyclerView.Adapter<MyShiftRecycelVi
 class MyShiftRecycelViewHolder extends RecyclerView.ViewHolder
 {
 
-    TextView shiftId;
+    TextView shiftId,shiftTime,shiftDate;
 
     public MyShiftRecycelViewHolder(@NonNull View itemView) {
         super(itemView);
 
         shiftId=itemView.findViewById(R.id.shiftid);
+        shiftTime=itemView.findViewById(R.id.shiftime);
+        shiftDate=itemView.findViewById(R.id.shiftDate);
     }
 }

@@ -68,25 +68,25 @@ public class Home_Fragment extends Fragment {
                 .document(String.valueOf(year))
                 .collection("MONTHS")
                 .document(String.valueOf(month)).collection("DAYS");
-        Toast.makeText(getContext(),"out 1 ",Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(),"out 1 ",Toast.LENGTH_LONG).show();
 
         monthCollection.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(getContext(),"in 1 "+task.getResult().size(),Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(getContext(),"in 1 "+task.getResult().size(),Toast.LENGTH_LONG).show();
 
                     for (DocumentSnapshot dayDocument : task.getResult().getDocuments())
                     {
 
-                        Toast.makeText(getContext(),"in 2 ",Toast.LENGTH_LONG).show();
+                       // Toast.makeText(getContext(),"in 2 ",Toast.LENGTH_LONG).show();
 
                         List<String> items = (List<String>) dayDocument.get("ShiftIds");
                         if (items != null) {
                             // Do something with the retrieved items for each day
                             for (String item : items) {
 
-                                Toast.makeText(getContext(),"here is loop "+item,Toast.LENGTH_LONG).show();
+                             //   Toast.makeText(getContext(),"here is loop "+item,Toast.LENGTH_LONG).show();
                                 shiftIdList.add(item);
                             }
 

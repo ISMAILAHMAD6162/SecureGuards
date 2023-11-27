@@ -1,16 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <TextView
 
-        android:text="shift ID"
-        android:id="@+id/shiftid"
+    <androidx.cardview.widget.CardView
+        app:cardElevation="20dp"
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </TextView>
 
+        <TextView
+            android:text="Open Shift"
+            android:id="@+id/openactive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+        <TextView
+            android:text="shift ID"
+            android:id="@+id/shiftid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+        <TextView
+            android:text="shift Time"
+            android:id="@+id/shiftime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+        <TextView
+            android:text="shift Date"
+            android:id="@+id/shiftDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
 
 
 </LinearLayout>
