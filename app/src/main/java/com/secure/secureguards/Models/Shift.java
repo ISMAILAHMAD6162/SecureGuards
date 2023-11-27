@@ -1,6 +1,8 @@
 package com.secure.secureguards.Models;
 
-public class Shift {
+import java.io.Serializable;
+
+public class Shift implements Serializable {
     public String     startTime;
     public String     endTime;
     public String     year;

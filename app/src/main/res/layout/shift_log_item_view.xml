@@ -8,37 +8,52 @@
 
     <androidx.cardview.widget.CardView
           app:elevation="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:text="Open Shift for today click"
-                android:id="@+id/open"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </TextView>
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
             <TextView
                 android:text="shift ID"
                 android:id="@+id/shiftidlog"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
             </TextView>
             <TextView
                 android:text="shift Time"
                 android:id="@+id/shiftimelog"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
             </TextView>
-            <TextView
-                android:text="shift Date"
-                android:id="@+id/shiftDatelog"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </TextView>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <TextView
+                    android:gravity="right"
+                    android:text="shift Date"
+                    android:id="@+id/shiftDatelog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                </TextView>
+                <Space
+                    android:minWidth="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                </Space>
+                <TextView
+                    android:gravity="left"
+                    android:text="Open"
+                    android:textColor="@color/material_dynamic_primary10"
+                    android:id="@+id/open"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                </TextView>
+
+            </LinearLayout>
+
 
 
 

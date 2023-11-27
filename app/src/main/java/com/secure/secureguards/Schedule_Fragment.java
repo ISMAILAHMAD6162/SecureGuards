@@ -1,5 +1,6 @@
 package com.secure.secureguards;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,7 +22,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.secure.secureguards.ActiveShift.Shift_Start_Activity;
 import com.secure.secureguards.Models.Shift;
+import com.secure.secureguards.Shift_Managment.CurrentDateItemListernInterface;
 import com.secure.secureguards.Shift_Managment.CurrentDateShitRecyviewAdapter;
 import com.secure.secureguards.Shift_Managment.ShiftLogRecycleView;
 import com.secure.secureguards.Shift_Managment.ShiftReyceviewAdapter;
@@ -32,7 +35,7 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class Schedule_Fragment extends Fragment {
+public class Schedule_Fragment extends Fragment implements CurrentDateItemListernInterface {
 
     private FirebaseFirestore db;
     private RecyclerView currentDateShiftRecycleView;
@@ -54,7 +57,7 @@ public class Schedule_Fragment extends Fragment {
         currentDatashiftArray=new ArrayList<Shift>();
 
         currentDateShiftRecycleView=view.findViewById(R.id.shift_current_date_shiftss_recycleview);
-        dateShitRecyviewAdapter=new CurrentDateShitRecyviewAdapter(currentDatashiftArray);
+        dateShitRecyviewAdapter=new CurrentDateShitRecyviewAdapter(currentDatashiftArray,this::curentItemShiftClick);
 
         shiftLogRecycleView=new ShiftLogRecycleView(shiftArrayListData);
 
@@ -63,7 +66,7 @@ public class Schedule_Fragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         shiftRecycleviewlog.setLayoutManager(linearLayoutManager);
 
-        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getActivity());
+        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         currentDateShiftRecycleView.setLayoutManager(linearLayoutManager2);
 
         shiftRecycleviewlog.setAdapter(shiftLogRecycleView);
@@ -101,7 +104,7 @@ public class Schedule_Fragment extends Fragment {
                             // Do something with the retrieved items for each day
                             for (String item : items) {
 
-                                Toast.makeText(getContext(),"here is loop "+item,Toast.LENGTH_LONG).show();
+                              //  Toast.makeText(getContext(),"here is loop "+item,Toast.LENGTH_LONG).show();
                                 shiftIdList.add(item);
                             }
 
@@ -119,9 +122,9 @@ public class Schedule_Fragment extends Fragment {
         Calendar calendar= Calendar.getInstance();
         String year=String.valueOf(calendar.get(Calendar.YEAR));
         String month="11";//String.valueOf(calendar.get(Calendar.MONTH));
-        String day= "26";///String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+        String day= "29";///String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
 
-        Toast.makeText(getContext(), "object with year"+year+"month "+month+"day"+day, Toast.LENGTH_LONG).show();
+       // Toast.makeText(getContext(), "object with year"+year+"month "+month+"day"+day, Toast.LENGTH_LONG).show();
 
         if (shiftIdList!=null) {
 
@@ -153,13 +156,13 @@ public class Schedule_Fragment extends Fragment {
                                         //
                                         Shift obj = document.toObject(Shift.class);
 
-                                        Toast.makeText(getContext(), "object with year"+obj.year+"month "+obj.month+"day"+obj.day, Toast.LENGTH_LONG).show();
+                                     //   Toast.makeText(getContext(), "object with year"+obj.year+"month "+obj.month+"day"+obj.day, Toast.LENGTH_LONG).show();
 
                                         if(obj.year.equals(year)&&obj.month.equals(month)&&obj.day.equals(day))
                                         {
                                             currentDatashiftArray.add(obj);
 
-                                            Toast.makeText(getContext(), "object with year"+obj.year+"month "+obj.month+"day"+obj.day, Toast.LENGTH_LONG).show();
+                                     //       Toast.makeText(getContext(), "object with year"+obj.year+"month "+obj.month+"day"+obj.day, Toast.LENGTH_LONG).show();
 
                                             dateShitRecyviewAdapter.notifyDataSetChanged();
                                         }
@@ -181,4 +184,14 @@ public class Schedule_Fragment extends Fragment {
 
     }
 
+    @Override
+    public void curentItemShiftClick(int index) {
+
+       // Toast.makeText(getContext(),"INDEX"+currentDatashiftArray.get(index).shiftId,Toast.LENGTH_LONG).show();
+        Intent intent=new Intent(getContext(), Shift_Start_Activity.class);
+        intent.putExtra("object",currentDatashiftArray.get(index));
+
+        startActivity(intent);
+
+    }
 }
