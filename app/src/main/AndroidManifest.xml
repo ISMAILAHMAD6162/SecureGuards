@@ -27,7 +27,7 @@
             android:name=".Screens.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".Dash_Board_Activity"
+            android:name=".Screens.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.SecureGuards.NoActionBar">
             <intent-filter>

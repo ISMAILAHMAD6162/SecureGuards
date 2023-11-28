@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -32,6 +33,7 @@ import java.util.List;
 
 public class Home_Fragment extends Fragment {
     private FirebaseFirestore db;
+    private String activeShiftId;
      private ShiftReyceviewAdapter shiftReyceviewAdapter;
     private RecyclerView shiftRecycleview;
     private List<String> shiftIdList;
@@ -54,6 +56,7 @@ public class Home_Fragment extends Fragment {
         shiftRecycleview.setLayoutManager(linearLayoutManager);
          shiftRecycleview.setAdapter(shiftReyceviewAdapter);
         retrieveItemsForMonth(2023,11,"123456789");
+        chckGrdActveShft("123456789");
         return view;
 
 
@@ -144,8 +147,31 @@ if (shiftIdList!=null) {
                 });
     }
 }
-
     }
+
+public  void chckGrdActveShft(String guardId)
+{
+
+    CollectionReference collectionReference = db.collection("ACTIVE_SHIFT");
+
+    collectionReference.document(guardId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        @Override
+        public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+
+               activeShiftId=documentSnapshot.getString("Id");
+            Toast.makeText(getContext(), "get All shift with ID LOOP COUNT" + activeShiftId, Toast.LENGTH_LONG).show();
+
+
+        }
+    }).addOnFailureListener(new OnFailureListener() {
+        @Override
+        public void onFailure(@NonNull Exception e) {
+
+        }
+    });
+
+}
 
 
 
