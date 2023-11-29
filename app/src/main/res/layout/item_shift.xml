@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Schedule_Fragment">
+    android:layout_height="wrap_content"
+    android:id="@+id/card">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        android:id="@+id/today_shift"
-        android:layout_centerHorizontal="true"
-        android:text="Today shift"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_margin="5dp"
         android:paddingBottom="15dp"
-        android:layout_below="@+id/today_shift"
-        android:id="@+id/current_shift"
         android:background="@drawable/style"
         android:layout_height="wrap_content">
 
@@ -32,13 +24,13 @@
             android:text="SHIFT ID :"
             android:textColor="@color/black"
             android:layout_height="wrap_content"
-            />
+           />
         <TextView
             android:id="@+id/shift_id"
             android:layout_toRightOf="@id/tv_shift"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:textStyle="bold"
+              android:textStyle="bold"
             android:text="12345678"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
@@ -47,14 +39,14 @@
 
         <Button
             android:id="@+id/shift_status"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:text="Open" />
+            android:text="Approved" />
         <TextView
             android:id="@+id/shift_title"
             android:layout_centerHorizontal="true"
@@ -66,8 +58,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
-
-
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="Shift Date"
+            android:gravity="center"
+            android:id="@+id/tv_date"
+            android:textColor="@color/black"
+            android:background="@drawable/style"
+            android:layout_below="@id/shift_title"
+            android:layout_margin="10dp"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="12-12-2024"
+            android:gravity="center"
+            android:id="@+id/shift_date"
+            android:textColor="@color/black"
+            android:layout_below="@id/tv_date"
+            android:layout_margin="10dp"
+            android:layout_centerHorizontal="true"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -75,7 +86,7 @@
             android:gravity="center"
             android:id="@+id/tv_start_time"
             android:textColor="@color/black"
-            android:layout_below="@id/shift_title"
+            android:layout_below="@id/shift_date"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"/>
         <TextView
@@ -86,7 +97,7 @@
             android:id="@+id/shift_start_time"
             android:textColor="@color/black"
             android:layout_toRightOf="@+id/tv_start_time"
-            android:layout_below="@id/shift_title"
+            android:layout_below="@id/shift_date"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"/>
 
@@ -98,7 +109,7 @@
             android:gravity="center"
             android:id="@+id/tv_end_time"
             android:textColor="@color/black"
-            android:layout_below="@id/shift_title"
+            android:layout_below="@id/shift_date"
             android:layout_marginTop="10dp"
             android:layout_toLeftOf="@id/shift_end_time"
             android:layout_marginRight="10dp"/>
@@ -109,23 +120,9 @@
             android:gravity="center"
             android:id="@+id/shift_end_time"
             android:textColor="@color/black"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/shift_title"
+           android:layout_alignParentRight="true"
+            android:layout_below="@id/shift_date"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"/>
     </RelativeLayout>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        android:id="@+id/shift_log"
-        android:layout_below="@id/current_shift"
-        android:layout_centerHorizontal="true"
-        android:text="Today shift"/>
-<androidx.recyclerview.widget.RecyclerView
-    android:layout_width="match_parent"
-    android:id="@+id/recyclerView"
-    android:layout_height="match_parent"
-    android:layout_below="@id/shift_log"/>
-
-</RelativeLayout>
+</androidx.cardview.widget.CardView>

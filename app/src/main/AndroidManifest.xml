@@ -38,9 +38,7 @@
         <activity
             android:name=".Shift_Activity"
             android:exported="false" />
-        <activity
-            android:name=".Forget_Password_Activity"
-            android:exported="false" />
+
         <activity
             android:name=".Sign_Up_Activity"
             android:exported="false" />

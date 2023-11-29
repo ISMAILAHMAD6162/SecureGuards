@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
@@ -19,10 +20,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.secure.secureguards.Model.UserRecord;
 import com.secure.secureguards.R;
 import com.secure.secureguards.Screens.AccountActivity;
 
@@ -172,27 +178,62 @@ public class SignupFragment extends Fragment {
     public void addRecord(){
 
 
-          String id = firebaseAuth.getCurrentUser().getUid();
+//          String id = firebaseAuth.getCurrentUser().getUid();
+//
+//            myRef=  FirebaseDatabase.getInstance().getReference("UserRecord").child(id);
+//            myRef.child("FirstName").setValue(et_first_name.getText().toString());
+//            myRef.child("LastName").setValue(et_last_name.getText().toString());
+//            myRef.child("DOB").setValue(et_dob.getText().toString());
+//            myRef.child("UserId").setValue(id);
+//            myRef.child("Mail").setValue(et_register_email.getText().toString());
+//            myRef.child("PhoneNumber").setValue(et_user_number.getText().toString());
+//            myRef.child("LicenceNumber").setValue(et_licence_number.getText().toString());
+//            myRef.child("LicenceExpireDate").setValue(et_expire_date.getText().toString());
+//
+//        myRef.child("ProfilePicture").setValue("empty");
+//        myRef.child("BackSideBadge").setValue("empty");
+//        myRef.child("FrontSideBadge").setValue("empty");
+//        myRef.child("Address").setValue("empty");
+//        myRef.child("City").setValue("empty");
 
-            myRef=  FirebaseDatabase.getInstance().getReference("UserRecord").child(id);
-            myRef.child("FirstName").setValue(et_first_name.getText().toString());
-            myRef.child("LastName").setValue(et_last_name.getText().toString());
-            myRef.child("DOB").setValue(et_dob.getText().toString());
-            myRef.child("UserId").setValue(id);
-            myRef.child("Mail").setValue(et_register_email.getText().toString());
-            myRef.child("PhoneNumber").setValue(et_user_number.getText().toString());
-            myRef.child("LicenceNumber").setValue(et_licence_number.getText().toString());
-            myRef.child("LicenceExpireDate").setValue(et_expire_date.getText().toString());
+//            loadingDialog.dismiss();
+//            Toast.makeText(getContext(),"Registration successful",Toast.LENGTH_LONG).show();
+//            ((AccountActivity)getActivity()).showLoginScreen();
 
-        myRef.child("ProfilePicture").setValue("empty");
-        myRef.child("BackSideBadge").setValue("empty");
-        myRef.child("FrontSideBadge").setValue("empty");
-        myRef.child("Address").setValue("empty");
-        myRef.child("City").setValue("empty");
 
-            loadingDialog.dismiss();
-            Toast.makeText(getContext(),"Registration successful",Toast.LENGTH_LONG).show();
-            ((AccountActivity)getActivity()).showLoginScreen();
+
+
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+
+        //now make a reference to the "users" collection in the DB
+        CollectionReference useRef = firebaseFirestore.collection("UserRecord");
+
+        UserRecord userRecord=new UserRecord(
+                et_first_name.getText().toString(),
+                et_last_name.getText().toString(),
+                et_dob.getText().toString(),
+                et_register_email.getText().toString()
+                ,et_user_number.getText().toString()
+                ,et_licence_number.getText().toString()
+                ,et_expire_date.getText().toString()
+                ,"empty","empty","empty","empty","empty"
+        );
+
+        useRef.document(et_licence_number.getText().toString()).set(userRecord)
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        loadingDialog.dismiss();
+                        Toast.makeText(getContext(), "Error ", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        loadingDialog.dismiss();
+                        Toast.makeText(getContext(),"Registration successful",Toast.LENGTH_LONG).show();
+                        ((AccountActivity)getActivity()).showLoginScreen();                    }
+                });
 
     }
 

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,8 +28,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.secure.secureguards.Dash_Board_Activity;
 import com.secure.secureguards.MainActivity;
+import com.secure.secureguards.Model.UserRecord;
 import com.secure.secureguards.R;
 import com.secure.secureguards.Screens.AccountActivity;
 import com.secure.secureguards.Screens.ForgotPasswordActivity;
@@ -43,6 +49,7 @@ public class LoginFragment extends Fragment {
     DatabaseReference myRef;
     String userMail;
     private FirebaseAuth firebaseAuth;
+    UserRecord userRecord;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -98,29 +105,49 @@ public class LoginFragment extends Fragment {
         else return true;
         return false;
     }
+      public void getData(){
+          final String licenceNumber=et_licence_number.getText().toString().trim();
+          FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+          CollectionReference useRef = firebaseFirestore.collection("UserRecord");
+          DocumentReference documentReference = useRef.document(licenceNumber);
 
-    private void getData(){
-        loadingDialog.show();
-        final String licenceNumber=et_licence_number.getText().toString().trim();
-        myRef=  FirebaseDatabase.getInstance().getReference().child("UserRecord");
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
-                    if(licenceNumber.equals(dataSnapshot1.child("LicenceNumber").getValue(String.class))) {
-                       userMail=dataSnapshot1.child("Mail").getValue(String.class);
-                       requestLogin(userMail,etLoginPassword.getText().toString());
-                    }
-                }
-                loadingDialog.dismiss();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
+          documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+              @Override
+              public void onSuccess(DocumentSnapshot documentSnapshot) {
+                  if (documentSnapshot.exists()) {
+                      //convert the documentSnapshot to a User object
+                       userRecord = documentSnapshot.toObject(UserRecord.class);
+                      requestLogin(userRecord.getMail(),etLoginPassword.getText().toString());
+                  }
+                  else {
+                      loadingDialog.dismiss();
+                      Toast.makeText(getContext(), "wrong licence ", Toast.LENGTH_LONG).show();
+                  }
+              }
+          });
+      }
+//    private void getData(){
+//        loadingDialog.show();
+//        final String licenceNumber=et_licence_number.getText().toString().trim();
+//        myRef=  FirebaseDatabase.getInstance().getReference().child("UserRecord");
+//        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
+//                    if(licenceNumber.equals(dataSnapshot1.child("LicenceNumber").getValue(String.class))) {
+//                       userMail=dataSnapshot1.child("Mail").getValue(String.class);
+//                       requestLogin(userMail,etLoginPassword.getText().toString());
+//                    }
+//                }
+//                loadingDialog.dismiss();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
     public void requestLogin(String email,String password){
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -131,8 +158,9 @@ public class LoginFragment extends Fragment {
                 } else if (task.isSuccessful()) {
                     Constant.setLoginStatus(getContext(),true);
                     Constant.setUserEmail(getContext(),userMail);
-                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                    Constant.setUserId(getContext(),firebaseUser.getUid());
+                    //FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                   // Constant.setUserId(getContext(),firebaseUser.getUid());
+                    Constant.setLicenceNumber(getContext(),userRecord.getLicenceNumber());
                     startActivity(new Intent(getContext(), Dash_Board_Activity.class));
                     getActivity().finish();
                     loadingDialog.show();
