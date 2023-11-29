@@ -177,27 +177,6 @@ public class SignupFragment extends Fragment {
     public void addRecord(){
 
 
-//          String id = firebaseAuth.getCurrentUser().getUid();
-//
-//            myRef=  FirebaseDatabase.getInstance().getReference("UserRecord").child(id);
-//            myRef.child("FirstName").setValue(et_first_name.getText().toString());
-//            myRef.child("LastName").setValue(et_last_name.getText().toString());
-//            myRef.child("DOB").setValue(et_dob.getText().toString());
-//            myRef.child("UserId").setValue(id);
-//            myRef.child("Mail").setValue(et_register_email.getText().toString());
-//            myRef.child("PhoneNumber").setValue(et_user_number.getText().toString());
-//            myRef.child("LicenceNumber").setValue(et_licence_number.getText().toString());
-//            myRef.child("LicenceExpireDate").setValue(et_expire_date.getText().toString());
-//
-//        myRef.child("ProfilePicture").setValue("empty");
-//        myRef.child("BackSideBadge").setValue("empty");
-//        myRef.child("FrontSideBadge").setValue("empty");
-//        myRef.child("Address").setValue("empty");
-//        myRef.child("City").setValue("empty");
-
-//            loadingDialog.dismiss();
-//            Toast.makeText(getContext(),"Registration successful",Toast.LENGTH_LONG).show();
-//            ((AccountActivity)getActivity()).showLoginScreen();
 
 
 

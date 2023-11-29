@@ -8,18 +8,18 @@ public class UserRecord {
                       String phoneNumber, String licenceNumber,
                       String licenceExpireDate, String profilePicture,
                       String backSideBadge, String frontSideBadge, String address, String city) {
-        firstName = firstName;
-        lastName = lastName;
-        dob = dob;
-        mail = mail;
-        phoneNumber = phoneNumber;
-        licenceNumber = licenceNumber;
-        licenceExpireDate = licenceExpireDate;
-        profilePicture = profilePicture;
-        backSideBadge = backSideBadge;
-        frontSideBadge = frontSideBadge;
-        address = address;
-        city = city;
+       this. firstName = firstName;
+        this. lastName = lastName;
+        this. dob = dob;
+        this. mail = mail;
+        this.  phoneNumber = phoneNumber;
+        this.  licenceNumber = licenceNumber;
+        this.  licenceExpireDate = licenceExpireDate;
+        this. profilePicture = profilePicture;
+        this.  backSideBadge = backSideBadge;
+        this. frontSideBadge = frontSideBadge;
+        this. address = address;
+        this.  city = city;
     }
     public UserRecord() {
 
