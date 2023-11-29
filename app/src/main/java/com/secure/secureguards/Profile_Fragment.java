@@ -167,7 +167,7 @@ public class Profile_Fragment extends Fragment {
                     et_register_email.setText(userRecord.getMail());
                     et_first_name.setText(userRecord.getFirstName());
                     et_last_name.setText(userRecord.getLastName());
-                    et_dob.setText(userRecord.getDOB());
+                    et_dob.setText(userRecord.getDob());
                     et_licence_number.setText(userRecord.getLicenceNumber());
                     et_user_number.setText(userRecord.getPhoneNumber());
                     et_expire_date.setText(userRecord.getLicenceExpireDate());
@@ -206,55 +206,7 @@ public class Profile_Fragment extends Fragment {
         });
     }
 
-    public void getProfileRecord(){
-        loadingDialog.show();
-        DatabaseReference myRef= FirebaseDatabase.getInstance().getReference().
-                child("UserRecord").child(Constant.getUserId(getContext()));
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getValue()!=null){
-                    et_address.setText(  dataSnapshot.child("Address").getValue(String.class));
-                    et_city.setText(dataSnapshot.child("City").getValue(String.class));
 
-                    if( !dataSnapshot.child("ProfilePicture").getValue(String.class).equals("empty")){
-                        Picasso.with(getContext())
-                                .load(dataSnapshot.child("ProfilePicture").getValue(String.class))
-                                .placeholder(R.drawable.progress_animation)
-                                .fit()
-                                .centerCrop()
-                                .into(profilePic);
-                    }
-                    if( !dataSnapshot.child("BackSideBadge").getValue(String.class).equals("empty")){
-                        Picasso.with(getContext())
-                                .load(dataSnapshot.child("BackSideBadge").getValue(String.class))
-                                .placeholder(R.drawable.progress_animation)
-                                .fit()
-                                .centerCrop()
-                                .into(backImg);
-                    }
-                    if( !dataSnapshot.child("FrontSideBadge").getValue(String.class).equals("empty")){
-                        Picasso.with(getContext())
-                                .load(dataSnapshot.child("FrontSideBadge").getValue(String.class))
-                                .placeholder(R.drawable.progress_animation)
-                                .fit()
-                                .centerCrop()
-                                .into(frontImg);
-                    }
-
-                    loadingDialog.dismiss();
-
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     public void saveRecord(){
         loadingDialog.show();
@@ -267,8 +219,8 @@ public class Profile_Fragment extends Fragment {
 //            myRef.child("Address").setValue(et_address.getText().toString());
 //            myRef.child("City").setValue(et_city.getText().toString());
             Map<String, Object> updates = new HashMap<>();
-            updates.put("Address", et_address.getText().toString());
-            updates.put("City", et_city.getText().toString());
+            updates.put("address", et_address.getText().toString());
+            updates.put("city", et_city.getText().toString());
 
             useRef.document(userRecord.getLicenceNumber())
                     .update(updates)
@@ -277,7 +229,7 @@ public class Profile_Fragment extends Fragment {
                         public void onSuccess(Void aVoid) {
                             loadingDialog.dismiss();
                             Toast.makeText(getContext(), "Update successful", Toast.LENGTH_SHORT).show();
-                            ((AccountActivity)getActivity()).showLoginScreen();
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -352,14 +304,8 @@ public class Profile_Fragment extends Fragment {
                         Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                         while (!urlTask.isSuccessful()) ;
                         Uri downloadUrl = urlTask.getResult();
-                      //  DatabaseReference myRef=  FirebaseDatabase.getInstance().getReference("UserRecord").child(Constant.getUserId(getContext()));
-                       // myRef.child("FrontSideBadge").setValue(downloadUrl.toString());
-//                        myRef.child("Address").setValue(et_address.getText().toString());
-//                        myRef.child("City").setValue(et_city.getText().toString());
-//                        loadingDialog.dismiss();
-//                        Toast.makeText(getContext(),"profile update",Toast.LENGTH_LONG).show();
                         Map<String, Object> updates = new HashMap<>();
-                        updates.put("FrontSideBadge", downloadUrl.toString());
+                        updates.put("frontSideBadge", downloadUrl.toString());
 
 
                         useRef.document(userRecord.getLicenceNumber())
@@ -369,7 +315,7 @@ public class Profile_Fragment extends Fragment {
                                     public void onSuccess(Void aVoid) {
                                         loadingDialog.dismiss();
                                         Toast.makeText(getContext(), "Update successful", Toast.LENGTH_SHORT).show();
-                                        ((AccountActivity)getActivity()).showLoginScreen();
+
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
@@ -408,10 +354,9 @@ public class Profile_Fragment extends Fragment {
                         Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                         while (!urlTask.isSuccessful()) ;
                         Uri downloadUrl = urlTask.getResult();
-                      //  DatabaseReference myRef=  FirebaseDatabase.getInstance().getReference("UserRecord").child(Constant.getUserId(getContext()));
-                       // myRef.child("BackSideBadge").setValue(downloadUrl.toString());
+
                         Map<String, Object> updates = new HashMap<>();
-                        updates.put("BackSideBadge", downloadUrl.toString());
+                        updates.put("backSideBadge", downloadUrl.toString());
 
 
                         useRef.document(userRecord.getLicenceNumber())
@@ -421,7 +366,7 @@ public class Profile_Fragment extends Fragment {
                                     public void onSuccess(Void aVoid) {
                                         loadingDialog.dismiss();
                                         Toast.makeText(getContext(), "Update successful", Toast.LENGTH_SHORT).show();
-                                        ((AccountActivity)getActivity()).showLoginScreen();
+
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
@@ -462,10 +407,8 @@ public class Profile_Fragment extends Fragment {
                         Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                         while (!urlTask.isSuccessful()) ;
                         Uri downloadUrl = urlTask.getResult();
-                       // DatabaseReference myRef=  FirebaseDatabase.getInstance().getReference("UserRecord").child(Constant.getUserId(getContext()));
-                       // myRef.child("ProfilePicture").setValue(downloadUrl.toString());
                         Map<String, Object> updates = new HashMap<>();
-                        updates.put("ProfilePicture", downloadUrl.toString());
+                        updates.put("profilePicture", downloadUrl.toString());
 
 
                         useRef.document(userRecord.getLicenceNumber())
@@ -475,7 +418,7 @@ public class Profile_Fragment extends Fragment {
                                     public void onSuccess(Void aVoid) {
                                         loadingDialog.dismiss();
                                         Toast.makeText(getContext(), "Update successful", Toast.LENGTH_SHORT).show();
-                                        ((AccountActivity)getActivity()).showLoginScreen();
+
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {

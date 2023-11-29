@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -106,48 +107,44 @@ public class LoginFragment extends Fragment {
         return false;
     }
       public void getData(){
-          final String licenceNumber=et_licence_number.getText().toString().trim();
+        loadingDialog.show();
           FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
           CollectionReference useRef = firebaseFirestore.collection("UserRecord");
-          DocumentReference documentReference = useRef.document(licenceNumber);
+          String licenseNumberToRetrieve = et_licence_number.getText().toString();
+          DocumentReference documentReference = useRef.document(licenseNumberToRetrieve);
 
           documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
               @Override
               public void onSuccess(DocumentSnapshot documentSnapshot) {
                   if (documentSnapshot.exists()) {
-                      //convert the documentSnapshot to a User object
+                      // Document exists, convert it to a UserRecord object
                        userRecord = documentSnapshot.toObject(UserRecord.class);
-                      requestLogin(userRecord.getMail(),etLoginPassword.getText().toString());
-                  }
-                  else {
+                      if (userRecord != null) {
+                        requestLogin(userRecord.getMail(),etLoginPassword.getText().toString());
+                       } else {
+                          loadingDialog.dismiss();
+                          Toast.makeText(getContext(), "UserRecord is unsuccessful " , Toast.LENGTH_SHORT).show();
+
+                          // Handle the case where the conversion to UserRecord is unsuccessful
+                      }
+                  } else {
+                      // Handle the case where the document does not exist
                       loadingDialog.dismiss();
-                      Toast.makeText(getContext(), "wrong licence ", Toast.LENGTH_LONG).show();
+                      Toast.makeText(getContext(), "wrong licence" , Toast.LENGTH_SHORT).show();
+
                   }
               }
+          }).addOnFailureListener(new OnFailureListener() {
+              @Override
+              public void onFailure(@NonNull Exception e) {
+                  // Handle failures
+                  loadingDialog.dismiss();
+                  Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+              }
           });
+
       }
-//    private void getData(){
-//        loadingDialog.show();
-//        final String licenceNumber=et_licence_number.getText().toString().trim();
-//        myRef=  FirebaseDatabase.getInstance().getReference().child("UserRecord");
-//        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
-//                    if(licenceNumber.equals(dataSnapshot1.child("LicenceNumber").getValue(String.class))) {
-//                       userMail=dataSnapshot1.child("Mail").getValue(String.class);
-//                       requestLogin(userMail,etLoginPassword.getText().toString());
-//                    }
-//                }
-//                loadingDialog.dismiss();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
+
     public void requestLogin(String email,String password){
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override

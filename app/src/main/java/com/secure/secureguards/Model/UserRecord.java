@@ -2,71 +2,122 @@ package com.secure.secureguards.Model;
 
 public class UserRecord {
 
-    String FirstName,LastName,DOB,Mail,PhoneNumber,LicenceNumber,LicenceExpireDate,ProfilePicture
-            ,BackSideBadge,FrontSideBadge,Address,City;
+    String firstName,  lastName,  dob, mail, phoneNumber,licenceNumber, licenceExpireDate,profilePicture, backSideBadge,frontSideBadge,address, city;
 
-    public UserRecord(String firstName, String lastName, String DOB, String mail, String phoneNumber, String licenceNumber, String licenceExpireDate, String profilePicture, String backSideBadge, String frontSideBadge, String address, String city) {
-        FirstName = firstName;
-        LastName = lastName;
-        this.DOB = DOB;
-        Mail = mail;
-        PhoneNumber = phoneNumber;
-        LicenceNumber = licenceNumber;
-        LicenceExpireDate = licenceExpireDate;
-        ProfilePicture = profilePicture;
-        BackSideBadge = backSideBadge;
-        FrontSideBadge = frontSideBadge;
-        Address = address;
-        City = city;
-    } public UserRecord() {
+    public UserRecord(String firstName, String lastName, String dob, String mail,
+                      String phoneNumber, String licenceNumber,
+                      String licenceExpireDate, String profilePicture,
+                      String backSideBadge, String frontSideBadge, String address, String city) {
+        firstName = firstName;
+        lastName = lastName;
+        dob = dob;
+        mail = mail;
+        phoneNumber = phoneNumber;
+        licenceNumber = licenceNumber;
+        licenceExpireDate = licenceExpireDate;
+        profilePicture = profilePicture;
+        backSideBadge = backSideBadge;
+        frontSideBadge = frontSideBadge;
+        address = address;
+        city = city;
+    }
+    public UserRecord() {
 
     }
 
-    public String getLastName() {
-        return LastName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getDOB() {
-        return DOB;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getMail() {
-        return Mail;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
-    public String getPhoneNumber() {
-        return PhoneNumber;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
-    public String getLicenceNumber() {
-        return LicenceNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getLicenceExpireDate() {
-        return LicenceExpireDate;
+    public void setLicenceNumber(String licenceNumber) {
+        this.licenceNumber = licenceNumber;
     }
 
-    public String getProfilePicture() {
-        return ProfilePicture;
+    public void setLicenceExpireDate(String licenceExpireDate) {
+        this.licenceExpireDate = licenceExpireDate;
     }
 
-    public String getBackSideBadge() {
-        return BackSideBadge;
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
-    public String getFrontSideBadge() {
-        return FrontSideBadge;
+    public void setBackSideBadge(String backSideBadge) {
+        this.backSideBadge = backSideBadge;
     }
 
-    public String getAddress() {
-        return Address;
+    public void setFrontSideBadge(String frontSideBadge) {
+        this.frontSideBadge = frontSideBadge;
     }
 
-    public String getCity() {
-        return City;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getLicenceNumber() {
+        return licenceNumber;
+    }
+
+    public String getLicenceExpireDate() {
+        return licenceExpireDate;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public String getBackSideBadge() {
+        return backSideBadge;
+    }
+
+    public String getFrontSideBadge() {
+        return frontSideBadge;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCity() {
+        return city;
     }
 }
