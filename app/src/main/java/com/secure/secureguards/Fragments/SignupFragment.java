@@ -40,7 +40,6 @@ public class SignupFragment extends Fragment {
 
     private EditText et_register_email, etRegisterPassword,
             etRegisterConfirmPassword,et_first_name,et_last_name,et_licence_number,et_dob,et_expire_date,et_user_number;
-
     TextView tv_login;
     Button btnRegister;
     private Dialog loadingDialog;
