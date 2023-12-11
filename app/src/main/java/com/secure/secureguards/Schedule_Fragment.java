@@ -51,28 +51,21 @@ public class Schedule_Fragment extends Fragment implements CurrentDateItemLister
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_schedule_, container, false);
 
-//        db = FirebaseFirestore.getInstance();
-//        shiftArrayListData=new ArrayList<Shift>();
-//        shiftIdList=new ArrayList<String>();
-//        currentDatashiftArray=new ArrayList<Shift>();
-//
-//        currentDateShiftRecycleView=view.findViewById(R.id.shift_current_date_shiftss_recycleview);
-//        dateShitRecyviewAdapter=new CurrentDateShitRecyviewAdapter(currentDatashiftArray,this::curentItemShiftClick);
-//
-//        shiftLogRecycleView=new ShiftLogRecycleView(shiftArrayListData);
-//
-//        shiftRecycleviewlog=view.findViewById(R.id.shift_item_recyclerview_log);
-//
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-//        shiftRecycleviewlog.setLayoutManager(linearLayoutManager);
-//
-//        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
-//        currentDateShiftRecycleView.setLayoutManager(linearLayoutManager2);
-//
-//        shiftRecycleviewlog.setAdapter(shiftLogRecycleView);
-//        currentDateShiftRecycleView.setAdapter(dateShitRecyviewAdapter);
-//
-//        retrieveItemsForMonth(2023,11,"123456789");
+       db = FirebaseFirestore.getInstance();
+        shiftArrayListData=new ArrayList<Shift>();
+        shiftIdList=new ArrayList<String>();
+        currentDatashiftArray=new ArrayList<Shift>();
+        currentDateShiftRecycleView=view.findViewById(R.id.currentdayrecyclview);
+       dateShitRecyviewAdapter=new CurrentDateShitRecyviewAdapter(currentDatashiftArray,this::curentItemShiftClick);
+        shiftLogRecycleView=new ShiftLogRecycleView(shiftArrayListData);
+        shiftRecycleviewlog=view.findViewById(R.id.shift_current_date_shiftss_recycleview);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        shiftRecycleviewlog.setLayoutManager(linearLayoutManager);
+        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        currentDateShiftRecycleView.setLayoutManager(linearLayoutManager2);
+        shiftRecycleviewlog.setAdapter(shiftLogRecycleView);
+        currentDateShiftRecycleView.setAdapter(dateShitRecyviewAdapter);
+        retrieveItemsForMonth(2023,11,"123456789");
         return view;
 
     }
@@ -160,11 +153,11 @@ public class Schedule_Fragment extends Fragment implements CurrentDateItemLister
 
                                         if(obj.year.equals(year)&&obj.month.equals(month)&&obj.day.equals(day))
                                         {
-                                            currentDatashiftArray.add(obj);
+                                           currentDatashiftArray.add(obj);
 
                                      //       Toast.makeText(getContext(), "object with year"+obj.year+"month "+obj.month+"day"+obj.day, Toast.LENGTH_LONG).show();
 
-                                            dateShitRecyviewAdapter.notifyDataSetChanged();
+                                           dateShitRecyviewAdapter.notifyDataSetChanged();
                                         }
                                         else {
                                             shiftArrayListData.add(obj);

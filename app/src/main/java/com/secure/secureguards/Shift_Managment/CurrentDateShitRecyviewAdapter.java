@@ -36,9 +36,9 @@ public class CurrentDateShitRecyviewAdapter extends RecyclerView.Adapter<MyCurre
     @Override
     public void onBindViewHolder(@NonNull MyCurrentDateShitRecyviewAdapterViewHolder holder, int position) {
 
-        holder.shiftId.setText(shiftArrayList.get(position).shiftId);
-        holder.shiftTime.setText("Start Time"+shiftArrayList.get(position).startTime+"   End Time"+shiftArrayList.get(position).endTime);
-        holder.shiftDate.setText(shiftArrayList.get(position).year+"-"+shiftArrayList.get(position).month+"-"+shiftArrayList.get(position).day);
+    //    holder.shiftId.setText(shiftArrayList.get(position).shiftId);
+      //  holder.shiftTime.setText("Start Time"+shiftArrayList.get(position).startTime+"   End Time"+shiftArrayList.get(position).endTime);
+      //  holder.shiftDate.setText(shiftArrayList.get(position).year+"-"+shiftArrayList.get(position).month+"-"+shiftArrayList.get(position).day);
 
     }
 
@@ -62,8 +62,8 @@ class MyCurrentDateShitRecyviewAdapterViewHolder extends RecyclerView.ViewHolder
                currentDateItemListernInterface.curentItemShiftClick(getAdapterPosition());
            }
        });
-        shiftId=itemView.findViewById(R.id.shiftidcurren);
-        shiftTime=itemView.findViewById(R.id.shiftimecurent);
-        shiftDate=itemView.findViewById(R.id.shiftDatecurrent);
+        // shiftId=itemView.findViewById(R.id.shiftidcurren);
+       // shiftTime=itemView.findViewById(R.id.shiftimecurent);
+       // shiftDate=itemView.findViewById(R.id.shiftDatecurrent);
     }
 }

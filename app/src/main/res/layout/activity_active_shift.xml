@@ -4,20 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActiveShift.Shift_Start_Activity">
-
-
-    <Button
-
-        android:id="@+id/open_shift"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Open Shift"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="297dp"
-        tools:ignore="MissingConstraints">
-
-    </Button>
-
+    tools:context=".ActiveShift.Active_Shift_Activity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.secure.secureguards.Shift_Managment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,10 +18,12 @@ public class ShiftReyceviewAdapter extends RecyclerView.Adapter<MyShiftRecycelVi
 {
     ArrayList<Shift> shiftArrayList;
 
-
     public ShiftReyceviewAdapter(ArrayList<Shift> arrayList)
     {
+
         this.shiftArrayList=arrayList;
+
+
     }
     @NonNull
     @Override
@@ -35,13 +38,18 @@ public class ShiftReyceviewAdapter extends RecyclerView.Adapter<MyShiftRecycelVi
     @Override
     public void onBindViewHolder(@NonNull MyShiftRecycelViewHolder holder, int position) {
 
+        holder.shiftTitle.setText(shiftArrayList.get(position).siteId);
         holder.shiftId.setText(shiftArrayList.get(position).shiftId);
-        holder.shiftTime.setText("Start Time"+shiftArrayList.get(position).startTime+"   End Time"+shiftArrayList.get(position).endTime);
-        holder.shiftDate.setText(shiftArrayList.get(position).year+"-"+shiftArrayList.get(position).month+"-"+shiftArrayList.get(position).day);
+
+      //  holder.shiftTime.setText("Start Time"+shiftArrayList.get(position).startTime+"   End Time"+shiftArrayList.get(position).endTime);
+     holder.shiftDate.setText(shiftArrayList.get(position).year+"-"+shiftArrayList.get(position).month+"-"+shiftArrayList.get(position).day);
+    holder.shiftstarttime.setText(shiftArrayList.get(position).startTime);
+    holder.shiftendtime.setText(shiftArrayList.get(position).endTime);
     }
 
     @Override
     public int getItemCount() {
+
         return shiftArrayList.size();
     }
 }
@@ -49,13 +57,16 @@ public class ShiftReyceviewAdapter extends RecyclerView.Adapter<MyShiftRecycelVi
 class MyShiftRecycelViewHolder extends RecyclerView.ViewHolder
 {
 
-    TextView shiftId,shiftTime,shiftDate;
-
+    TextView shiftId,shiftTime,shiftTitle,shiftstarttime,shiftendtime;
+    Button shiftDate;
     public MyShiftRecycelViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        shiftId=itemView.findViewById(R.id.shiftid);
-        shiftTime=itemView.findViewById(R.id.shiftime);
-        shiftDate=itemView.findViewById(R.id.shiftDate);
+        shiftTitle=itemView.findViewById(R.id.shift_title_comming);
+      shiftId=itemView.findViewById(R.id.shift_id_upcoming);
+       // shiftTime=itemView.findViewById(R.id.shiftime);
+        shiftstarttime=itemView.findViewById(R.id.shift_start_time);
+        shiftDate=itemView.findViewById(R.id.up_coming_date);
+        shiftendtime=itemView.findViewById(R.id.shift_endtime);
     }
 }

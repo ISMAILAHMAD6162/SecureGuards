@@ -18,6 +18,9 @@
         android:theme="@style/Theme.SecureGuards"
         tools:targetApi="31">
         <activity
+            android:name=".ActiveShift.Active_Shift_Activity"
+            android:exported="false" />
+        <activity
             android:name=".ActiveShift.Shift_Start_Activity"
             android:exported="false" />
         <activity
@@ -27,7 +30,7 @@
             android:name=".Screens.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".Screens.SplashActivity"
+            android:name=".Dash_Board_Activity"
             android:exported="true"
             android:theme="@style/Theme.SecureGuards.NoActionBar">
             <intent-filter>
@@ -42,11 +45,6 @@
         <activity
             android:name=".Shift_Activity"
             android:exported="false" />
-        <activity
-            android:name=".Dash_Board_Activity"
-            android:exported="false"
-            android:theme="@style/Theme.SecureGuards.NoActionBar"/>
-
         <activity
             android:name=".Sign_Up_Activity"
             android:exported="false" />

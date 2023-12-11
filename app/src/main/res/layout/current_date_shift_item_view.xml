@@ -7,70 +7,113 @@
     android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
         app:elevation="30dp"
-        android:background="@color/colorPrimary"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="5dp">
-        <LinearLayout
-            android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:paddingBottom="15dp"
+            android:layout_below="@+id/today_shift"
+            android:id="@+id/current_shift"
+            android:background="@drawable/style"
             android:layout_height="wrap_content">
 
+
             <TextView
-                android:text="shift ID"
-                android:id="@+id/shiftidcurren"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </TextView>
+                android:id="@+id/tv_shift"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:text="SHIFT ID :"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                />
             <TextView
-                android:text="shift Time"
-                android:id="@+id/shiftimecurent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </TextView>
-            <LinearLayout
-                android:weightSum="4"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:layout_weight="1"
-                        android:text="shift Date"
-                        android:id="@+id/shiftDatecurrent"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                    </TextView>
-                </LinearLayout>
+                android:id="@+id/shift_id"
+                android:layout_toRightOf="@id/tv_shift"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:text="12345678"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
-               <LinearLayout
-                   android:layout_weight="3"
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent">
-                   <TextView
-                       android:layout_weight="2"
-                       android:text="Open"
-                       android:textColor="@color/material_dynamic_primary10"
-                       android:id="@+id/open"
-                       android:layout_width="match_parent"
-                       android:layout_height="match_parent">
-                   </TextView>
-
-               </LinearLayout>
-
-            </LinearLayout>
+            <Button
+                android:id="@+id/shift_status"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="APPROVED" />
+            <TextView
+                android:id="@+id/shift_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/shift_status"
+                android:textColor="@color/black"
+                android:text="shift title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shift Start Time"
+                android:gravity="center"
+                android:id="@+id/tv_start_time"
+                android:textColor="@color/black"
+                android:layout_below="@id/shift_title"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="07:00 am"
+                android:gravity="center"
+                android:id="@+id/shift_start_time"
+                android:textColor="@color/black"
+                android:layout_toRightOf="@+id/tv_start_time"
+                android:layout_below="@id/shift_title"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"/>
 
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shift End Time"
+                android:gravity="center"
+                android:id="@+id/tv_end_time"
+                android:textColor="@color/black"
+                android:layout_below="@id/shift_title"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/shift_end_time"
+                android:layout_marginRight="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10:00 pm"
+                android:gravity="center"
+                android:id="@+id/shift_end_time"
+                android:textColor="@color/black"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/shift_title"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"/>
+        </RelativeLayout>
 
 
     </androidx.cardview.widget.CardView>
+
+
 
 
 

@@ -48,13 +48,12 @@ public class Home_Fragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         shiftArrayListData=new ArrayList<Shift>();
         shiftIdList=new ArrayList<String>();
-
-
-       shiftReyceviewAdapter=new ShiftReyceviewAdapter(shiftArrayListData);
+shiftReyceviewAdapter=new ShiftReyceviewAdapter(shiftArrayListData);
          shiftRecycleview=view.findViewById(R.id.shift_item_recyclerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         shiftRecycleview.setLayoutManager(linearLayoutManager);
          shiftRecycleview.setAdapter(shiftReyceviewAdapter);
+
         retrieveItemsForMonth(2023,11,"123456789");
         chckGrdActveShft("123456789");
         return view;

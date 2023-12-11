@@ -35,14 +35,15 @@ public class ShiftLogRecycleView extends RecyclerView.Adapter<MyshiftLogViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyshiftLogViewHolder holder, int position) {
-        holder.shiftId.setText(shiftArrayList.get(position).shiftId);
-        holder.shiftTime.setText("Start Time"+shiftArrayList.get(position).startTime+"   End Time"+shiftArrayList.get(position).endTime);
-        holder.shiftDate.setText(shiftArrayList.get(position).year+"-"+shiftArrayList.get(position).month+"-"+shiftArrayList.get(position).day);
+      //  holder.shiftId.setText(shiftArrayList.get(position).shiftId);
+      //  holder.shiftTime.setText("Start Time"+shiftArrayList.get(position).startTime+"   End Time"+shiftArrayList.get(position).endTime);
+      //  holder.shiftDate.setText(shiftArrayList.get(position).year+"-"+shiftArrayList.get(position).month+"-"+shiftArrayList.get(position).day);
 
     }
 
     @Override
     public int getItemCount() {
+
         return shiftArrayList.size();
     }
 }
@@ -52,8 +53,8 @@ class MyshiftLogViewHolder extends RecyclerView.ViewHolder {
     public MyshiftLogViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        shiftId = itemView.findViewById(R.id.shiftidlog);
-        shiftTime = itemView.findViewById(R.id.shiftimelog);
-        shiftDate = itemView.findViewById(R.id.shiftDatelog);
+       // shiftId = itemView.findViewById(R.id.shiftidlog);
+       // shiftTime = itemView.findViewById(R.id.shiftimelog);
+       // shiftDate = itemView.findViewById(R.id.shiftDatelog);
     }
 }

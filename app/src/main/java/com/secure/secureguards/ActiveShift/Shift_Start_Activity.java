@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,17 +26,29 @@ public class Shift_Start_Activity extends AppCompatActivity {
     String shiftId;
     public Site site;
     public Shift shift;
+    private Button open_shift;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shift_start);
+        open_shift=findViewById(R.id.open_shift);
         db=FirebaseFirestore.getInstance();
         Intent intent = getIntent();
         if (intent.hasExtra("object")) {
          shift = (Shift) intent.getSerializableExtra("object");
 
             getSiteData(shift.siteId);
+
+
+            open_shift.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(), Active_Shift_Activity.class);
+                startActivity(intent);
+
+                }
+            });
 
         }
 
